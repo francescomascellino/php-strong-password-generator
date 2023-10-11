@@ -86,9 +86,10 @@ include __DIR__ . '/functions.php';
 
                         </div>
 
+                        <!-- IL VALUE DEI CHECKBOX E' CORRISPONDENTE A UNA DELLE VARIABILI DI CARATTERI. IL NAME VIENE DICHIARATO COME ARRAY -->
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="letters" value="<?= $letters ?>" name="characters[]" checked>
-                            <label class="form-check-label" for="letters">Letere</label>
+                            <label class="form-check-label" for="letters">Lettere</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="numbers" value="<?= $numbers ?>" name="characters[]" checked>
