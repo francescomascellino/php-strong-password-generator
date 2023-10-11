@@ -25,18 +25,43 @@ $response = "Nessun Parametro Inserito";
 
 $length = $_GET["length"];
 
-$letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
+/* $letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
 
 $numbers = "1234567890";
 
 $symbols = "!£$%&/()=?-_,;.:òç@à°#ù§é[è+*]";
 
-$char_container = $letters . $numbers . $symbols;
+$char_container = $letters . $numbers . $symbols; */
 
-var_dump($char_container);
+// var_dump($char_container);
+
+function gen_pwd($length)
+{
+
+    $letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
+
+    $numbers = "1234567890";
+
+    $symbols = "!£$%&/()=?-_,;.:òç@à°#ù§é[è+*]";
+
+    $char_container = $letters . $numbers . $symbols;
+
+    $password = "";
+
+    while (strlen($password) < $length) {
+        $random_char = rand(0, strlen($char_container) - 1);
+
+        $char = $char_container[$random_char];
+
+        $password .= $char;
+
+        var_dump($password);
+    }
+};
 
 if (isset($_GET["length"])) {
-    $response = $char_container;
+    // $response = $char_container;
+    gen_pwd($length);
 }
 
 ?>
