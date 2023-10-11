@@ -17,7 +17,7 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 -->
 
 <?php
-
+session_start();
 //  Milestone 1 VEDI functions.php
 
 /*  Milestone 2
@@ -49,6 +49,12 @@ include __DIR__ . '/functions.php';
         <div class="container">
             <div class="row flex-column g-3">
                 <h2>Genera una Password Sicura</h2>
+
+                <?php
+
+                //TEST INCLUSIONE MARKUP SU PAGINA DIVERSA
+                include __DIR__ . '/response.php';
+                ?>
                 <div class="col border rounded-2 p-3">
                     <p class="m-0"><?= $response ?></p>
                 </div>
