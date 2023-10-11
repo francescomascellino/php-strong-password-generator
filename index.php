@@ -42,11 +42,13 @@ function gen_pwd($length)
 
     $numbers = "1234567890";
 
-    $symbols = "!£$%&/()=?-_,;.:òç@à°#ù§é[è+*]";
+    $symbols = "!$%&/()=?-_,;.:@#[+*]";
 
     $char_container = $letters . $numbers . $symbols;
 
     $password = "";
+
+    var_dump($length);
 
     while (strlen($password) < $length) {
         $random_char = rand(0, strlen($char_container) - 1);
@@ -54,14 +56,14 @@ function gen_pwd($length)
         $char = $char_container[$random_char];
 
         $password .= $char;
-
-        var_dump($password);
     }
+
+    return $password;
 };
 
 if (isset($_GET["length"])) {
-    // $response = $char_container;
-    gen_pwd($length);
+    var_dump($length);
+    $response = gen_pwd($length);
 }
 
 ?>
