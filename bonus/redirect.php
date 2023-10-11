@@ -27,7 +27,6 @@ session_start();
                 <h2>Ecco la tua nuova password!</h2>
 
                 <?php
-
                 include __DIR__ . '/response.php';
                 ?>
                 <a href="./index.php" class="btn btn-primary">Torna al form</a>
@@ -43,6 +42,5 @@ session_start();
 </html>
 
 <?php
-// $_SESSION["response"] = "Nessun parametro inserito";
-// session_destroy();
+session_destroy();
 ?>

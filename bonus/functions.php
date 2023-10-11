@@ -1,30 +1,29 @@
 <?php
 
-session_start();
+// session_start();
 
 /*  Milestone 1
  Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente. Scriviamo tutto (logica e layout) in un unico file index.php */
 
 // RESPONSE BASE VALUE
-// $response = "Nessun Parametro Inserito";
+// $_SESSION["response"] = "Nessun Parametro Inserito";
 
-$_SESSION["response"] = "Nessun Parametro Inserito";
+// I VALORI DEI CARATTERI VENGONO ASSEGNATI COME ATTRIBUTO VALUE AI CHECKBOXES
+$letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
 
-// ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
-$length = $_GET["length"];
+$numbers = "1234567890";
+
+$symbols = "!$%&/()=?-_,;.:@#[+*]";
 
 function gen_pwd($length)
 {
 
-    //DIVIDE IN VARIABILI I VARI ELEMENTI CHE COMPONGONO UNA PASSWORD
-    $letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
-
-    $numbers = "1234567890";
-
-    $symbols = "!$%&/()=?-_,;.:@#[+*]";
-
     // IL CONTENITORE DEI CARATTERI CHE COMPONGONO UNA PASSWORD (PER IL BONUS INSERIRE CONDIZIONI PER RIMUOVERE GLI ELEMENTI NON RICHIESTI)
-    $char_container = $letters . $numbers . $symbols;
+    // $char_container = $letters . $numbers . $symbols;
+
+
+    $char_container = implode("", $_GET["characters"]);
+
 
     // LA PASSWORD NON GENERATA E' VUOTA
     $password = "";
@@ -42,19 +41,22 @@ function gen_pwd($length)
         $password .= $char;
     }
 
-
+    /*     
+    Milestone 3 (BONUS)
+    Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
+    leggete le slide sulla session e la documentazione */
     header('Location: ./redirect.php');
 
     //RITORNA IL VALORE DI PASSWORD
-    return $_SESSION["password"] = $password;
+    return $password;
 };
 
 // SE $_GET["length"] E' STATO SETTATO DAL FORM...
 if (isset($_GET["length"])) {
+
+    // ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
+    $length = $_GET["length"];
+
     // LA RESPONSE VERRA' SOSTUITUITA DALLA PASSWORD GENERATA DALLA FUNZIONE
     $_SESSION["response"] = gen_pwd($length);
-    var_dump("SESSION response " . $_SESSION["response"]);
-
-    // $response = gen_pwd($length);
-    // var_dump("response " . $response);
 }

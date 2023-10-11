@@ -87,15 +87,15 @@ include __DIR__ . '/functions.php';
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="letters" value="letters" checked>
+                            <input class="form-check-input" type="checkbox" id="letters" value="<?= $letters ?>" name="characters[]" checked>
                             <label class="form-check-label" for="letters">Letere</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="numbers" value="numbers" checked>
+                            <input class="form-check-input" type="checkbox" id="numbers" value="<?= $numbers ?>" name="characters[]" checked>
                             <label class="form-check-label" for="numbers">Numeri</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="symbols" value="symbols" checked>
+                            <input class="form-check-input" type="checkbox" id="symbols" value="<?= $symbols ?>" name="characters[]" checked>
                             <label class="form-check-label" for="symbols">Simboli</label>
                         </div>
 

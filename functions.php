@@ -5,9 +5,6 @@
 // RESPONSE BASE VALUE
 $response = "Nessun Parametro Inserito";
 
-// ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
-$length = $_GET["length"];
-
 function gen_pwd($length)
 {
 
@@ -43,6 +40,10 @@ function gen_pwd($length)
 
 // SE $_GET["length"] E' STATO SETTATO DAL FORM...
 if (isset($_GET["length"])) {
+
+    // ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
+    $length = $_GET["length"];
+
     // LA RESPONSE VERRA' SOSTUITUITA DALLA PASSWORD GENERATA DALLA FUNZIONE
     $response = gen_pwd($length);
 }
