@@ -1,6 +1,4 @@
-<?php
-
-/* 
+<!-- 
 Descrizione
 Dobbiamo creare una pagina che permetta ai nostri utenti di utilizzare il nostro generatore di password (abbastanza) sicure. L’esercizio è suddiviso in varie milestone ed è molto importante svilupparle in modo ordinato.
 
@@ -15,56 +13,16 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 leggete le slide sulla session e la documentazione
 
 Milestone 4 (BONUS)
-Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
- */
+Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. 
+-->
 
-/*  Milestone 1
- Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente. Scriviamo tutto (logica e layout) in un unico file index.php */
+<?php
 
-// RESPONSE BASE VALUE
-$response = "Nessun Parametro Inserito";
+//  Milestone 1 VEDI functions.php
 
-// ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
-$length = $_GET["length"];
-
-function gen_pwd($length)
-{
-
-    //DIVIDE IN VARIABILI I VARI ELEMENTI CHE COMPONGONO UNA PASSWORD
-    $letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
-
-    $numbers = "1234567890";
-
-    $symbols = "!$%&/()=?-_,;.:@#[+*]";
-
-    // IL CONTENITORE DEI CARATTERI CHE COMPONGONO UNA PASSWORD (PER IL BONUS INSERIRE CONDIZIONI PER RIMUOVERE GLI ELEMENTI NON RICHIESTI)
-    $char_container = $letters . $numbers . $symbols;
-
-    // LA PASSWORD NON GENERATA E' VUOTA
-    $password = "";
-
-    // FINCHE' LA LUNGHEZZA DELLA PASSWORD E' MINORE DELL VALORE $lenght INSERITO DALL'UTENTE...
-    while (strlen($password) < $length) {
-
-        //GENERA UN NUMERO CHE PESCHERA' IL CORRISPETTIVO CARATTERE DAL CONTENITORE DI CARATTERI. E' UN NUMERO CASUALE TRA 0 e LA LUNGHEZZA DEL CONTENITORE. ESSENDO ELABORAT COME ARRAY, IL PRIMO VALORE E' 0 MENTRE L'ULTIMO E' LA LUNGHEZZA -1 (ZERO E' GIA' INSERITO, AVREMMO ALTRIMENTI UN VALORE EXTRA)
-        $random_char = rand(0, strlen($char_container) - 1);
-
-        // IL SINGOLO CARATTERE E' UGUALE A CIO' CHE E' PRESENTE IN $char_container ALL'INDICE RANDOMICO GENERATO PRECEDENTEMENTE
-        $char = $char_container[$random_char];
-
-        // PASSWORD E' UGUALE A SE STESSA + $char. QUESTO VIENE RIPETUTO FINO A FINE CICLO
-        $password .= $char;
-    }
-
-    //RITORNA IL VALORE DI PASSWORD
-    return $password;
-};
-
-// SE $_GET["length"] E' STATO SETTATO DAL FORM...
-if (isset($_GET["length"])) {
-    // LA RESPONSE VERRA' SOSTUITUITA DALLA PASSWORD GENERATA DALLA FUNZIONE
-    $response = gen_pwd($length);
-}
+/*  Milestone 2
+ Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php che includeremo poi nella pagina principale */
+include './functions.php';
 
 ?>
 
@@ -99,6 +57,8 @@ if (isset($_GET["length"])) {
                     <form action="" method="get">
                         <div class="mb-3">
                             <label for="length" class="form-label">Quanti caratteri deve contenere la tua password?</label>
+
+                            <!-- SE E' STATO INSERITO UN VALORE, IL value dEL FORM RESTERA' INVARIATO -->
                             <input type="number" class="form-control" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32" value="<?php echo isset($_GET["length"]) ?  $_GET["length"] : 8 ?>" style="width: 4.5rem;">
                             <small id="helpId" class="form-text text-muted">Il valore inserito deve essere un numero compreso tra 8 e 32</small>
                         </div>
