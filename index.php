@@ -99,7 +99,7 @@ if (isset($_GET["length"])) {
                     <form action="" method="get">
                         <div class="mb-3">
                             <label for="length" class="form-label">Quanti caratteri deve contenere la tua password?</label>
-                            <input type="number" class="form-control" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32" value="8" style="width: 4.5rem;">
+                            <input type="number" class="form-control" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32" value="<?php echo isset($_GET["length"]) ?  $_GET["length"] : 8 ?>" style="width: 4.5rem;">
                             <small id="helpId" class="form-text text-muted">Il valore inserito deve essere un numero compreso tra 8 e 32</small>
                         </div>
 
