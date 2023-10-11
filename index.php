@@ -68,14 +68,14 @@ include __DIR__ . '/functions.php';
                             <h4>Consenti la ripetizione dei caratteri</h4>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="no_repeat" id="no_repeat" value="repeat_chars">
+                                <input class="form-check-input" type="radio" name="char_repeat" id="no_repeat" value="no_repeat">
                                 <label class="form-check-label" for="no_repeat">
                                     No
                                 </label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="repeat" id="repeat" value="repeat_chars" checked>
+                                <input class="form-check-input" type="radio" name="char_repeat" id="repeat" value="repeat_chars" checked>
                                 <label class="form-check-label" for="repeat">
                                     Si
                                 </label>

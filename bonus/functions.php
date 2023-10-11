@@ -21,6 +21,8 @@ function gen_pwd($length)
     // IL CONTENITORE DEI CARATTERI CHE COMPONGONO UNA PASSWORD (PER IL BONUS INSERIRE CONDIZIONI PER RIMUOVERE GLI ELEMENTI NON RICHIESTI)
     // $char_container = $letters . $numbers . $symbols;
 
+    /* Milestone 4 (BONUS)
+    Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). */
     // ESSENDO IL NAME DEL CHECKBOX DICHIARATO COME ARRAY PUç ESSERE IMPLOSO. VENGONO AGGIUNTI ALL'ARRAY SOLO I VALORI DEI BOX SPUNTATI
     $char_container = implode("", $_GET["characters"]);
 
