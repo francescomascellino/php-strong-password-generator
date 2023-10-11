@@ -41,3 +41,8 @@ session_start();
 </body>
 
 </html>
+
+<?php
+// $_SESSION["response"] = "Nessun parametro inserito";
+// session_destroy();
+?>
