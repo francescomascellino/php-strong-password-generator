@@ -52,7 +52,7 @@ include __DIR__ . '/functions.php';
 
                 <?php
 
-                //TEST INCLUSIONE MARKUP SU PAGINA DIVERSA - IN QUESTO BONUS IL VALORE RISULTA ESSERE "Nessun parametro inserito quando si torna indietro
+                //TEST INCLUSIONE MARKUP SU PAGINA DIVERSA - IN QUESTO BONUS IL VALORE RISULTA ESSERE "Nessun parametro inserito" quando si torna indietro
                 // include __DIR__ . '/response.php';
                 ?>
 
@@ -61,12 +61,12 @@ include __DIR__ . '/functions.php';
                         <div class="mb-3">
                             <label for="length" class="form-label">Quanti caratteri deve contenere la tua password?</label>
 
-                            <!-- SE E' STATO INSERITO UN VALORE, IL value dEL FORM RESTERA' INVARIATO -->
+                            <!-- SE E' STATO INSERITO UN VALORE, IL value DEL FORM RESTERA' INVARIATO -->
                             <input type="number" class="form-control" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32" value="<?php echo isset($_GET["length"]) ?  $_GET["length"] : 8 ?>" style="width: 4.5rem;">
                             <small id="helpId" class="form-text text-muted">Il valore inserito deve essere un numero compreso tra 8 e 32</small>
                         </div>
 
-                        <div>
+                        <div class="mb-3">
 
                             <h4>Consenti la ripetizione dei caratteri</h4>
 
@@ -86,25 +86,46 @@ include __DIR__ . '/functions.php';
 
                         </div>
 
-                        <!-- IL VALUE DEI CHECKBOX E' CORRISPONDENTE A UNA DELLE VARIABILI DI CARATTERI. IL NAME VIENE DICHIARATO COME ARRAY -->
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="letters" value="<?= $letters ?>" name="characters[]" checked>
-                            <label class="form-check-label" for="letters">Lettere</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="numbers" value="<?= $numbers ?>" name="characters[]" checked>
-                            <label class="form-check-label" for="numbers">Numeri</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="symbols" value="<?= $symbols ?>" name="characters[]" checked>
-                            <label class="form-check-label" for="symbols">Simboli</label>
+                        <div>
+
+                            <h4>Scegli quali caratteri utilizzare</h4>
+
+                            <!-- IL VALUE DEI CHECKBOX E' CORRISPONDENTE A UNA DELLE VARIABILI DI CARATTERI. IL NAME VIENE DICHIARATO COME ARRAY -->
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="letters" value="<?= $letters ?>" name="characters[]" checked>
+                                <label class="form-check-label" for="letters">Lettere</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="numbers" value="<?= $numbers ?>" name="characters[]" checked>
+                                <label class="form-check-label" for="numbers">Numeri</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="symbols" value="<?= $symbols ?>" name="characters[]" checked>
+                                <label class="form-check-label" for="symbols">Simboli</label>
+                            </div>
+
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-primary">Invia</button> <button type="reset" class="btn btn-warning">Annulla</button>
+                            </div>
+
                         </div>
 
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-primary">Invia</button> <button type="reset" class="btn btn-warning">Annulla</button>
-                        </div>
 
                     </form>
+
+                    <!-- NON FUNZIONA -->
+                    <?php if (isset($alert)) : ?>
+
+                        <div class="col">
+
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Attenzione:</strong> <?= $alert ?>
+                            </div>
+
+                        </div>
+
+                    <?php endif ?>
+
                 </div>
 
             </div>
