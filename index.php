@@ -18,6 +18,27 @@ Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
  */
 
+/*  Milestone 1
+ Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente. Scriviamo tutto (logica e layout) in un unico file index.php */
+
+$response = "Nessun Parametro Inserito";
+
+$length = $_GET["length"];
+
+$letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
+
+$numbers = "1234567890";
+
+$symbols = "!£$%&/()=?-_,;.:òç@à°#ù§é[è+*]";
+
+$char_container = $letters . $numbers . $symbols;
+
+var_dump($char_container);
+
+if (isset($_GET["length"])) {
+    $response = $char_container;
+}
+
 ?>
 
 <!doctype html>
@@ -44,14 +65,14 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
             <div class="row flex-column g-3">
                 <h2>Genera una Password Sicura</h2>
                 <div class="col border rounded-2 p-3">
-                    <p class="m-0">Nessun Parametro Inserito</p>
+                    <p class="m-0"><?= $response ?></p>
                 </div>
 
                 <div class="col border rounded-2 py-3">
                     <form action="" method="get">
                         <div class="mb-3">
                             <label for="length" class="form-label">Quanti caratteri deve contenere la tua password?</label>
-                            <input type="number" class="form-control w-25" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32">
+                            <input type="number" class="form-control" name="length" id="length" aria-describedby="helpId" placeholder="" min="8" max="32" value="8" style="width: 4.5rem;">
                             <small id="helpId" class="form-text text-muted">Il valore inserito deve essere un numero compreso tra 8 e 32</small>
                         </div>
 
