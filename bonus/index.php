@@ -52,12 +52,12 @@ include __DIR__ . '/functions.php';
 
                 <?php
 
-                //TEST INCLUSIONE MARKUP SU PAGINA DIVERSA - IN QUESTO BONUS IL VALORE RISULTA ESSERE "Nessun parametro inserito" quando si torna indietro
-                // include __DIR__ . '/response.php';
+                //TEST INCLUSIONE MARKUP SU PAGINA DIVERSA
+                include __DIR__ . '/response.php';
                 ?>
 
                 <div class="col border rounded-2 py-3">
-                    <form action="" method="get">
+                    <form action="./redirect.php" method="get">
                         <div class="mb-3">
                             <label for="length" class="form-label">Quanti caratteri deve contenere la tua password?</label>
 

@@ -1,12 +1,7 @@
 <?php
 
-// session_start();
-
 /*  Milestone 1
  Creare un form che invii in GET la lunghezza della password. Una nostra funzione utilizzerà questo dato per generare una password casuale (composta da lettere, lettere maiuscole, numeri e simboli) da restituire all’utente. Scriviamo tutto (logica e layout) in un unico file index.php */
-
-// RESPONSE BASE VALUE (ATTIVARE SE SI DESIDERA IL MESSAGGIO NELLA HOME)
-// $_SESSION["response"] = "Nessun Parametro Inserito";
 
 // I VALORI DEI CARATTERI VENGONO ASSEGNATI COME ATTRIBUTO VALUE AI CHECKBOXES
 $letters = "abcdefghilmnopqrstuvzxywjkABCDEFGHILMNOPQRSTUVZXYWJK";
@@ -24,7 +19,7 @@ function gen_pwd($length)
     // SE NON SONO STATI SELEZIONATI CHECKBOXES VISUALIZZA UN ALLERTA E NON EFFETTUA REDIRECT
     if (empty($_GET["characters"])) {
 
-        $alert = "Selezione almeno un tipo di carattere!";
+        $alert = "Seleziona la lunghezza della password e almeno un tipo di carattere!";
 
         var_dump($alert);
 
@@ -63,19 +58,7 @@ function gen_pwd($length)
     Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
     leggete le slide sulla session e la documentazione */
 
-        header('Location: ./redirect.php');
-
         //RITORNA IL VALORE DI PASSWORD
         return $password;
     }
 };
-
-// SE $_GET["length"] E' STATO SETTATO DAL FORM...
-if (isset($_GET["length"])) {
-
-    // ASSEGNA ALLA VARIABILE IL VALORE DEL $_GET
-    $length = $_GET["length"];
-
-    // LA RESPONSE VERRA' SOSTUITUITA DALLA PASSWORD GENERATA DALLA FUNZIONE
-    $_SESSION["response"] = gen_pwd($length);
-}
